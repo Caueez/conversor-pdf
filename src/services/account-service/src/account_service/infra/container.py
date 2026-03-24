@@ -65,7 +65,7 @@ class ContainerService:
                 raise ValueError("Persistence backend not found")
             
     async def startup(self) -> None:
-        await self._persistence_backend.conect()
+        await self._persistence_backend.connect()
         await self._migrations.run()
             
     async def shutdown(self) -> None:
