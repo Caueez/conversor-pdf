@@ -10,7 +10,7 @@ class Postgres:
         self._dsn = dsn
         self._pool: Optional[Pool] = None
 
-    async def conect(self) -> None:
+    async def connect(self) -> None:
         if self._pool is None:
             self._pool = await asyncpg.create_pool(dsn=self._dsn)
     
