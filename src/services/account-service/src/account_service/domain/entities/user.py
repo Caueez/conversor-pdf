@@ -25,6 +25,3 @@ class User:
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat()
         }
-
-    def compare_hash(self, hash: str):
-        return self.password_hash == hash
