@@ -1,0 +1,11 @@
+[project]
+name = "conversor-pdf"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "src/services/account-service",
+]
