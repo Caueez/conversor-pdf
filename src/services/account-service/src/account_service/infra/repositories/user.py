@@ -28,7 +28,7 @@ class UserRepo(UserRepositoryPort):
         )
 
     async def create(self, user: User) -> User:
-        query = Query(
+        query = Query("INSERT",
             """
             INSERT INTO users (id, name, email, password_hash, is_active, created_at, updated_at)
             VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -40,7 +40,7 @@ class UserRepo(UserRepositoryPort):
         return user
 
     async def get(self, user_id: UUID) -> User | None:
-        query = Query(
+        query = Query("SE:ECT",
             """
             SELECT id, name, email, password_hash, is_active, created_at, updated_at
             FROM users
@@ -56,7 +56,7 @@ class UserRepo(UserRepositoryPort):
         
 
     async def get_by_email(self, email: str) -> User | None:
-        query = Query(
+        query = Query("SELECT",
             """
             SELECT id, name, email, password_hash, is_active, created_at, updated_at
             FROM users
@@ -71,7 +71,7 @@ class UserRepo(UserRepositoryPort):
         return self._row_to_entity(record)
 
     async def list(self) -> Sequence[User]:
-        query = Query(
+        query = Query("SELECT",
             """
             SELECT * FROM users
             """,
