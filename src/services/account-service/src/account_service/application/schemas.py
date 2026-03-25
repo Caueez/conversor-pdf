@@ -8,6 +8,9 @@ class CreateUserDTO(BaseModel):
     password: str
 
 
+class DeleteUserDTO(BaseModel):
+    user_id: str
+
 class UserDTO(BaseModel):
     id: str
     name: str

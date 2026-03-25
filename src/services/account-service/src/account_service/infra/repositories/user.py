@@ -40,13 +40,13 @@ class UserRepo(UserRepositoryPort):
         return user
 
     async def get(self, user_id: UUID) -> User | None:
-        query = Query("SE:ECT",
+        query = Query("SELECT",
             """
             SELECT id, name, email, password_hash, is_active, created_at, updated_at
             FROM users
             WHERE id = $1
             """,
-            [user_id]
+            [str(user_id)]
         )
 
         record = await self.db.fetch_one(query)
@@ -85,4 +85,12 @@ class UserRepo(UserRepositoryPort):
         raise NotImplementedError
 
     async def delete(self, user_id: UUID) -> None:
-        raise NotImplementedError
+        query = Query("DELETE",
+            """
+            DELETE FROM users
+            WHERE id = $1
+            """,
+            [str(user_id)]
+        )
+
+        await self.db.execute(query)

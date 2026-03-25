@@ -1,11 +1,12 @@
 
 from typing import Sequence
+from uuid import UUID
 
 from account_service.domain.entities.user import User
 from account_service.domain.value_objects.user import Email, PasswordHash
 from account_service.application.interfaces.repository import UserRepositoryPort
 
-from account_service.application.schemas import CreateUserDTO, UserDTO
+from account_service.application.schemas import CreateUserDTO, DeleteUserDTO, UserDTO
 
 from account_service.domain.exceptions import (
     ConflictDomainError
@@ -38,3 +39,11 @@ class UserUseCase:
     
     async def list(self) -> Sequence[UserDTO]:
         return [UserDTO.model_validate(user.to_dict()) for user in await self._user_repository.list()]
+    
+    async def delete(self, dto: DeleteUserDTO) -> None:
+        user_id = UUID(dto.user_id)
+        existing = await self._user_repository.get(user_id)
+        if not existing:
+            raise ConflictDomainError("User not found")
+        
+        await self._user_repository.delete(user_id)
