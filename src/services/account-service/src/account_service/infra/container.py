@@ -12,11 +12,10 @@ from account_service.application.interfaces.repository import UserRepositoryPort
 
 from account_service.application.use_cases.users import UserUseCase
 
-from account_service.infra.repositories.user import UserRepo
+from account_service.infra.repositories.user import PostgresUserRepoAdapter
 
 from account_service.infra.migration import Migrations
 
-from typing import Any
 
 @dataclass(slots=True)
 class ContainerService:
@@ -28,7 +27,7 @@ class ContainerService:
 
     _migrations: Migrations
     
-    _persistence_backend: Any
+    _persistence_backend: Postgres
 
     @classmethod
     def build(cls, settings: AccountSettings) -> ContainerService:
@@ -49,7 +48,7 @@ class ContainerService:
         )
     
     @classmethod
-    def _persistence_build(cls, settings: AccountSettings) -> Any:
+    def _persistence_build(cls, settings: AccountSettings) -> Postgres:
         match settings.PERSISTENCE_BACKEND:
             case "postgres":
                 return Postgres(settings.POSTGRES_DSN)
@@ -57,10 +56,12 @@ class ContainerService:
                 raise ValueError("Persistence backend not found")
     
     @classmethod
-    def _repo_build(cls, settings: AccountSettings, persistence_backend: Any) -> Any:
+    def _repo_build(
+        cls, settings: AccountSettings, persistence_backend: Postgres
+    ) -> UserRepositoryPort:
         match settings.USER_REPO:
             case "postgres":
-                return UserRepo(persistence_backend)
+                return PostgresUserRepoAdapter(persistence_backend)
             case _:
                 raise ValueError("Persistence backend not found")
             

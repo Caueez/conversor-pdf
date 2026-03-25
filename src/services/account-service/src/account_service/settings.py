@@ -16,7 +16,7 @@ class AccountSettings(BaseSettings):
     
     POSTGRES_DSN: str = "postgresql://postgres:postgres@postgres:5432/user_service"
     REDIS_DSN: str = "redis://redis:6379/0"
-    REBBITMQ_DSN: str = "amqp://guest:guest@rabbitmq:5672/"
+    RABBITMQ_DSN: str = "amqp://guest:guest@rabbitmq:5672/"
 
     USER_REPO: str = "postgres"
 
