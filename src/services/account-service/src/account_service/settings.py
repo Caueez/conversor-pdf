@@ -7,7 +7,7 @@ class AccountSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="APP_", env_file=".env", extra="ignore")
 
     ENV: str = "dev"
-    NAME: str = "user-default-service"
+    NAME: str = "account-service"
     DEBUG: bool = True
 
     PERSISTENCE_BACKEND: str = "postgres"
