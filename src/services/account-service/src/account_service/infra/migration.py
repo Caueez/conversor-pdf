@@ -7,7 +7,7 @@ from infra.database.shared import Query
 
 class Migrations:
 
-    USERS_TABLE = """
+    USERS_TABLE = ("CREATE", """
         CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY,
             email TEXT NOT NULL UNIQUE,
@@ -17,9 +17,9 @@ class Migrations:
             created_at TIMESTAMPTZ NOT NULL,
             updated_at TIMESTAMPTZ NOT NULL
         );
-    """
+    """)
 
-    SESSION_TABLE = """
+    SESSION_TABLE = ("CREATE", """
         CREATE TABLE IF NOT EXISTS sessions (
             id UUID PRIMARY KEY,
             user_id UUID NOT NULL,
@@ -28,7 +28,7 @@ class Migrations:
             revoked BOOLEAN NOT NULL DEFAULT FALSE,
             created_at TIMESTAMPTZ NOT NULL
         );
-    """
+    """)
 
     def __init__(self, persistence: Postgres) -> None:
         self.db = persistence
@@ -38,8 +38,8 @@ class Migrations:
             self.SESSION_TABLE
         ]
 
-    def create_query(self, query: str) -> Query:
-        return Query(query, [])
+    def create_query(self, query: tuple[str]) -> Query:
+        return Query(query[0], query[1], [])
         
     async def ensure_schema(self) -> None:
         for table in self.tables:
