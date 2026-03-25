@@ -28,7 +28,7 @@ class UserRepo(UserRepositoryPort):
         )
 
     async def create(self, user: User) -> User:
-        query = Query("INSERT",
+        query = Query.create("INSERT",
             """
             INSERT INTO users (id, name, email, password_hash, is_active, created_at, updated_at)
             VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -40,7 +40,7 @@ class UserRepo(UserRepositoryPort):
         return user
 
     async def get(self, user_id: UUID) -> User | None:
-        query = Query("SELECT",
+        query = Query.create("SELECT",
             """
             SELECT id, name, email, password_hash, is_active, created_at, updated_at
             FROM users
@@ -56,7 +56,7 @@ class UserRepo(UserRepositoryPort):
         
 
     async def get_by_email(self, email: str) -> User | None:
-        query = Query("SELECT",
+        query = Query.create("SELECT",
             """
             SELECT id, name, email, password_hash, is_active, created_at, updated_at
             FROM users
@@ -71,7 +71,7 @@ class UserRepo(UserRepositoryPort):
         return self._row_to_entity(record)
 
     async def list(self) -> Sequence[User]:
-        query = Query("SELECT",
+        query = Query.create("SELECT",
             """
             SELECT * FROM users
             """,
@@ -82,10 +82,20 @@ class UserRepo(UserRepositoryPort):
         return [self._row_to_entity(record) for record in records]
 
     async def update(self, user: User) -> User:
-        raise NotImplementedError
+        query = Query.create("UPDATE",
+            """
+            UPDATE users
+            SET name = $1, email = $2, password_hash = $3, is_active = $4, updated_at = $5
+            WHERE id = $6
+            """,
+            [user.name, user.email, user.password_hash, user.is_active, user.updated_at, user.id]
+        )
+
+        await self.db.execute(query)
+        return user
 
     async def delete(self, user_id: UUID) -> None:
-        query = Query("DELETE",
+        query = Query.create("DELETE",
             """
             DELETE FROM users
             WHERE id = $1

@@ -8,10 +8,10 @@ from collections import defaultdict
 from enum import Enum
 
 class Statement(Enum):
-    SELECT: str = "SELECT"
-    INSERT: str = "INSERT"
-    UPDATE: str = "UPDATE"
-    DELETE: str = "DELETE"
+    SELECT = "SELECT"
+    INSERT = "INSERT"
+    UPDATE = "UPDATE"
+    DELETE = "DELETE"
 
 
 @dataclass(frozen=True)
@@ -38,15 +38,17 @@ class Query:
 
     @classmethod
     def create(cls, statement: str, query: str, values: Optional[list[object]] = None):
-        statement = Statement(statement.upper())
-        if not cls._is_valide_query(statement, query):
+        statement_enum = Statement(statement.upper())
+        if not cls._is_valide_query(statement_enum, query):
             raise RuntimeError("Invalid query")
-        return cls(statement, query, values)
+        return cls(statement_enum, query, values)
     
     @classmethod
     def _is_valide_query(cls, statement: Statement, query: str) -> bool:
-        if statement.value != query.split(" ")[0]:
+        first_word = query.lstrip().split(None, 1)[0].upper()
+        if statement.value != first_word:
             raise RuntimeError("Invalid query")
+
         
         return True
     
