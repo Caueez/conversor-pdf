@@ -15,6 +15,8 @@ from account_service.application.schemas import (
     UserDTO,
 )
 
+from account_service.api.presenters.user_presenter import dto_to_user_response, request_to_dto
+
 router = APIRouter(tags=["Users"])
 ContainerDep = Annotated[ContainerService, Depends(get_container)]
 TraceIdDep = Annotated[str, Depends(get_trace_id)]
@@ -25,7 +27,8 @@ async def list_users(
     _trace_id: TraceIdDep,
     container: ContainerDep,
 ) -> list[UserDTO]:
-    return list(await container.users.list())
+    application_dtos = await container.users.list()
+    return [dto_to_user_response(dto) for dto in application_dtos]
 
 
 @router.post("/", response_model=UserDTO, status_code=status.HTTP_201_CREATED)
@@ -34,8 +37,9 @@ async def create_user(
     _trace_id: TraceIdDep,
     container: ContainerDep,
 ) -> UserDTO:
-    dto = CreateUserDTO.model_validate(user_request.model_dump())
-    return await container.users.create(dto)
+    request_dto = request_to_dto(CreateUserDTO, **user_request.model_dump(exclude_none=True))
+    dto = await container.users.create(request_dto)
+    return dto_to_user_response(dto)
 
 
 @router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -44,8 +48,10 @@ async def delete_user(
     _trace_id: TraceIdDep,
     container: ContainerDep,
 ) -> None:
-    dto = DeleteUserDTO(user_id=user_id)
-    await container.users.delete(dto)
+    request_dto = request_to_dto(DeleteUserDTO, user_id=user_id)
+    application_dto = await container.users.delete(request_dto)
+    return dto_to_user_response(application_dto)
+    
 
 
 @router.patch("/{user_id}", response_model=UserDTO, status_code=status.HTTP_200_OK)
@@ -55,5 +61,6 @@ async def update_user(
     _trace_id: TraceIdDep,
     container: ContainerDep,
 ) -> UserDTO:
-    dto = UpdateUserDTO(user_id=user_id, **user_request.model_dump(exclude_none=True))
-    return await container.users.update(dto)
+    request_dto = request_to_dto(UpdateUserDTO, user_id=user_id, **user_request.model_dump(exclude_none=True))
+    response_dto = await container.users.update(request_dto)
+    return dto_to_user_response(response_dto)
