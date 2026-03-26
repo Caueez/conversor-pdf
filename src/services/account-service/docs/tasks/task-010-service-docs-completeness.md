@@ -10,9 +10,27 @@
 ## Status
 Concluida
 
+## Escopo
+- Escopo principal: Servico
+- Servico alvo: account-service
+
+## Linha Do Tempo
+1. [x] Estruturar pasta `docs/` do servico com arquivos principais.
+2. [x] Publicar indice e links de navegacao.
+3. [x] Registrar backlog tecnico em roadmap e tasks do servico.
+
+## Dependencias
+- Nenhuma dependencia registrada.
+
+## Conflitos Mapeados
+- Sobreposicao com task antiga da raiz `docs/tasks/archive/task-011-service-readme-completeness.md` (canonica agora no servico).
+
 ## Contexto
 Servico passou a ter documentacao completa com indice, contratos, regras e tasks.
 
 ## Evidencias
 - `src/services/account-service/docs/`
 - `src/services/account-service/README.md`
+
+## Observacoes
+- Sem observacoes adicionais.

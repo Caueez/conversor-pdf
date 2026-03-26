@@ -10,7 +10,7 @@ Regras funcionais implementadas em dominio, aplicacao e contrato de entrada.
 
 - Email deve ter formato valido.
 - Senha deve ter minimo de 8 caracteres.
-- Senha deve ter maximo de 72 caracteres (regra de dominio atual).
+- No estado atual de `develop`, dominio nao aplica limite maximo de senha.
 - Email deve ser unico para criacao de usuario.
 - Em atualizacao, se email for alterado, deve continuar unico.
 - Atualizacao de usuario exige ao menos um campo no payload (`name`, `email` ou `password`).
@@ -19,7 +19,8 @@ Regras funcionais implementadas em dominio, aplicacao e contrato de entrada.
 
 ## Observacoes
 
-- Existe pendencia de alinhamento entre contrato da API e limite maximo de senha do dominio.
+- Contrato de API atual limita senha em `128` caracteres.
+- Existe proposta de alinhamento para `72` em revisao humana na branch `feat/account-service-password-hardening`.
 
 ## Referencias
 

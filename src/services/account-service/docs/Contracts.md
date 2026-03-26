@@ -20,7 +20,7 @@ Contratos HTTP expostos atualmente pelo servico.
 - Requisicao (`CreateUserRequest`):
   - `name: string (2..120)`
   - `email: string (5..255)`
-  - `password: string (8..72)`
+  - `password: string (8..128)`
 - Resposta: `201` com `UserResponse`
 
 ### `DELETE /{user_id}`
@@ -39,6 +39,10 @@ Contratos HTTP expostos atualmente pelo servico.
   - `password?: string (8..128)`
   - regra: ao menos um campo deve ser enviado
 - Resposta: `200` com `UserResponse`
+
+## Observacao De Evolucao
+
+- Existe ajuste para `8..72` em revisao humana na branch `feat/account-service-password-hardening` (tasks 003 e 016).
 
 ## Contrato De Erro (Atual)
 

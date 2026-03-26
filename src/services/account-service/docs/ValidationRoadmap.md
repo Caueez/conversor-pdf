@@ -24,6 +24,10 @@ Pendencias e entregas relacionadas ao servico de contas/usuarios.
 - [Tarefa 008 - Confiabilidade De Import Path Em Runtime](./tasks/task-008-runtime-import-path-reliability.md)
 - [Tarefa 009 - Endurecimento De Tratamento De Erros](./tasks/task-009-error-handling-hardening.md)
 - [Tarefa 010 - Completude De Documentacao Do Servico](./tasks/task-010-service-docs-completeness.md)
+- [Tarefa 011 - Defaults De Infra Em Settings](./tasks/task-011-defaults-de-infra-em-settings.md)
+- [Tarefa 012 - Versionamento De Migrations](./tasks/task-012-versionamento-de-migrations.md)
+- [Tarefa 013 - Propagacao De Trace ID](./tasks/task-013-propagacao-de-trace-id.md)
+- [Tarefa 014 - Consistencia De Nome De Variavel RabbitMQ](./tasks/task-014-consistencia-de-nome-de-variavel-rabbitmq.md)
 
 ## Referencias
 

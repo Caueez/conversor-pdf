@@ -14,5 +14,5 @@ Em revisao humana
 Dominio e API divergiam no limite maximo de senha; o ajuste para `72` foi aplicado na branch e aguarda merge.
 
 ## Evidencias
-- API aceita ate `128`: `src/services/account-service/src/account_service/api/schemas.py`
-- Dominio valida ate `72`: `src/services/account-service/src/account_service/domain/value_objects/user.py`
+- Estado atual em `develop`: API aceita ate `128` em `src/services/account-service/src/account_service/api/schemas.py`
+- Implementacao em revisao: `fefc694` ajusta API para `72` e `dd67e71` aplica limite maximo no dominio (`src/services/account-service/src/account_service/domain/value_objects/user.py`)

@@ -15,7 +15,8 @@ Este indice cobre apenas informacoes de longa duracao (regras, arquitetura, cont
 - [Contributing.md](./Contributing.md): regras de git, contribuicao e revisao
 - [Setup.md](./Setup.md): guia de setup e execucao local
 - [ValidationRoadmap.md](./ValidationRoadmap.md): status de validacao e backlog tecnico
-- [tasks/](./tasks): um arquivo por tarefa (concluida ou pendente)
+- [tasks/](./tasks): tarefas de escopo geral do monorepo
+- [tasks/archive/](./tasks/archive): historico de tasks antigas migradas para backlogs de servico
 
 ## Servicos
 
@@ -27,3 +28,4 @@ Este indice cobre apenas informacoes de longa duracao (regras, arquitetura, cont
   - [BusinessRules.md](../src/services/account-service/docs/BusinessRules.md)
   - [Contributing.md](../src/services/account-service/docs/Contributing.md)
   - [ValidationRoadmap.md](../src/services/account-service/docs/ValidationRoadmap.md)
+  - [tasks/](../src/services/account-service/docs/tasks/)
