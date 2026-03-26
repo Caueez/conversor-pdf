@@ -15,6 +15,9 @@ from account_service.application.use_cases.users import UserUseCase
 from account_service.infra.repositories.user import PostgresUserRepoAdapter
 
 from account_service.infra.migration import Migrations
+from infra.security.password_hashers.bcrypt import BcryptHasher
+
+from account_service.infra.security.bcrypt_hasher_adapter import BcryptPasswordHasherAdapter
 
 
 @dataclass(slots=True)
@@ -26,7 +29,6 @@ class ContainerService:
     user_repo: UserRepositoryPort
 
     _migrations: Migrations
-    
     _persistence_backend: Postgres
 
     @classmethod
@@ -35,7 +37,10 @@ class ContainerService:
         persistence_backend = cls._persistence_build(settings=settings)
         user_repo = cls._repo_build(settings, persistence_backend)
 
-        user_use_case = UserUseCase(user_repo)
+        password_hasher = BcryptHasher(rounds=settings.PASSWORD_HASHER_ROUNDS)
+        password_hasher = BcryptPasswordHasherAdapter(password_hasher)
+
+        user_use_case = UserUseCase(user_repo, password_hasher)
 
         migrations = Migrations(persistence_backend)
 
