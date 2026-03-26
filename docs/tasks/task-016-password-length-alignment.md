@@ -3,15 +3,15 @@
 ## Metadados
 - Data de criacao: 2026-03-26
 - Data de finalizacao: -
-- Commit de implementacao: -
-- Branch de implementacao: -
+- Commit de implementacao: fefc694
+- Branch de implementacao: feat/account-service-password-hardening
 - Risco/Urgencia: Alta / Curto prazo
 
 ## Status
-Pendente
+Em revisao humana
 
 ## Contexto
-Dominio e API ainda divergem no limite maximo de senha.
+Dominio e API divergiam no limite maximo de senha; o ajuste para `72` foi aplicado na branch e aguarda merge.
 
 ## Evidencias
 - API aceita ate `128`: `src/services/account-service/src/account_service/api/schemas.py`

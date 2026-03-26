@@ -3,8 +3,8 @@
 ## Metadados
 - Data de criacao: 2026-03-26
 - Data de finalizacao: 2026-03-26
-- Commit de implementacao: nao informado (registrar hash apos commit)
-- Branch de implementacao: -
+- Commit de implementacao: fefc694
+- Branch de implementacao: feat/account-service-password-hardening
 - Risco/Urgencia: Media / Medio prazo
 
 ## Status

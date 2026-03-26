@@ -3,8 +3,8 @@
 ## Metadados
 - Data de criacao: 2026-03-26
 - Data de finalizacao: 2026-03-26
-- Commit de implementacao: nao informado (registrar hash apos commit)
-- Branch de implementacao: -
+- Commit de implementacao: 7b6c4b3, 8ba4031
+- Branch de implementacao: docs/documentation-governance-flow
 - Risco/Urgencia: Baixa / Planejado
 
 ## Status
