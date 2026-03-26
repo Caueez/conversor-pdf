@@ -7,6 +7,8 @@ Este arquivo recebe a solicitacao ativa para criacao/implementacao de tarefas.
 
 - Escrever a solicitacao no bloco `Solicitacao Atual`.
 - O agente deve ler e respeitar os documentos obrigatorios antes de executar.
+- O agente deve classificar o escopo (geral ou servico) antes de criar/alterar task.
+- O agente deve verificar conflito com tasks existentes antes de abrir nova task.
 - Ao final da chamada, o agente pode limpar a solicitacao deste arquivo.
 - O resultado nao pode se perder: deve ser persistido na task correspondente.
 
@@ -37,6 +39,8 @@ O agente deve registrar:
 - Escopo unico identificado:
 - Branch planejada (sempre a partir de `develop`):
 - Task alvo (arquivo em `docs/tasks/` ou `src/services/.../docs/tasks/`):
+- Conflitos com tasks existentes:
+- Necessidade de task em outro servico (sim/nao):
 
 ## Bloco 4 - Persistencia Obrigatoria
 
@@ -46,6 +50,8 @@ Ao concluir, o agente deve atualizar a task com:
 - `Commit de implementacao`
 - `Status`
 - `Data de finalizacao` (se concluida)
+- `Linha Do Tempo` (ordem e dependencias)
+- `Conflitos Mapeados`
 - Evidencias da implementacao
 
 ## Bloco 5 - Reset Controlado

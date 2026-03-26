@@ -6,6 +6,10 @@ usage() {
 Uso:
   scripts/docs/new_task.sh --scope root --titulo "Titulo da tarefa" [--status "Pendente"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
   scripts/docs/new_task.sh --scope service --service account-service --titulo "Titulo da tarefa" [--status "Pendente"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
+
+Regras:
+  - --scope root: apenas tarefas de escopo geral do monorepo.
+  - --scope service: tarefas especificas de um servico.
 USAGE
 }
 
@@ -90,6 +94,8 @@ fi
 case "$scope" in
   root)
     target_dir="docs/tasks"
+    scope_label="Geral do monorepo"
+    service_label="-"
     ;;
   service)
     if [[ -z "$service" ]]; then
@@ -97,6 +103,8 @@ case "$scope" in
       exit 1
     fi
     target_dir="src/services/${service}/docs/tasks"
+    scope_label="Servico"
+    service_label="$service"
     ;;
   *)
     echo "Erro: --scope deve ser root ou service." >&2
@@ -152,11 +160,29 @@ cat > "$file_path" <<TASK
 ## Status
 ${status}
 
+## Escopo
+- Escopo principal: ${scope_label}
+- Servico alvo: ${service_label}
+
+## Linha Do Tempo
+1. [ ] Definir ordem de implementacao desta task no fluxo.
+2. [ ] Registrar dependencias de tasks anteriores (mesmo servico, raiz ou outro servico).
+3. [ ] Registrar tarefas posteriores desbloqueadas por esta entrega.
+
+## Dependencias
+- Nenhuma dependencia registrada.
+
+## Conflitos Mapeados
+- Nenhum conflito identificado ate o momento.
+
 ## Contexto
 Descreva o contexto da tarefa.
 
 ## Evidencias
 - Adicionar evidencias aqui.
+
+## Observacoes
+- Sem observacoes adicionais.
 TASK
 
 echo "Tarefa criada: ${file_path}"

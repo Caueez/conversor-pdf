@@ -6,14 +6,22 @@ Padronizar contribuicoes tecnicas, fluxo de git e qualidade de entrega.
 ## Escopo
 Aplica-se a todo o monorepo.
 
+## Escopo Das Tasks
+
+- `docs/tasks/` (raiz): somente tarefas de escopo geral do monorepo.
+- `src/services/<servico>/docs/tasks/`: tarefas especificas de cada servico.
+- Se a implementacao principal exigir mudancas em outro servico, criar task no servico impactado e registrar a ordem na linha do tempo da task principal.
+
 ## Fluxo Git Obrigatorio (Fim Da Implementacao)
 
-1. Separar arquivos em grupos de escopo unico.
-2. Para cada grupo, criar uma branch nova sempre a partir de `develop`.
-3. Dentro de cada branch, realizar commits pequenos com escopo ainda mais reduzido.
-4. Preencher as tasks da branch com os commits de implementacao.
-5. Aguardar revisao humana.
-6. Somente apos confirmacao humana, fazer merge da branch em `develop`.
+1. Classificar o escopo da entrega (geral do monorepo ou servico especifico).
+2. Verificar se ja existe task com mesmo objetivo para evitar duplicidade/conflito.
+3. Separar arquivos em grupos de escopo unico.
+4. Para cada grupo, criar uma branch nova sempre a partir de `develop`.
+5. Dentro de cada branch, realizar commits pequenos com escopo ainda mais reduzido.
+6. Preencher as tasks da branch com commits de implementacao, linha do tempo, dependencias e conflitos mapeados.
+7. Aguardar revisao humana.
+8. Somente apos confirmacao humana, fazer merge da branch em `develop`.
 
 ## Regras De Branch
 
@@ -42,6 +50,8 @@ Para cada task tocada na branch:
 - Preencher `Branch de implementacao` com o nome da branch.
 - Preencher `Commit de implementacao` com os hashes dos commits da branch relacionados a task.
 - Atualizar `Status` e `Data de finalizacao` quando concluida.
+- Manter `Linha Do Tempo` com ordem real de execucao e dependencias entre tasks.
+- Registrar em `Conflitos Mapeados` qualquer sobreposicao de escopo com outra task (e a decisao tomada).
 
 ## Script De Tarefas
 
@@ -56,6 +66,7 @@ Para cada task tocada na branch:
 - Atualizar regras de negocio quando invariantes mudarem.
 - Registrar tarefas concluidas/pendentes em `ValidationRoadmap.md` e `tasks/`.
 - Priorizar retrocompatibilidade e explicitar breaking changes.
+- Quando houver impacto em mais de um servico, quebrar em tasks por servico e registrar ordem de implementacao na task principal.
 
 ## Checklist Minimo Antes De Finalizar
 
