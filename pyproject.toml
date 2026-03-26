@@ -1,7 +1,7 @@
 [project]
 name = "conversor-pdf"
 version = "0.1.0"
-readme = "README.md"
+readme = "docs/Index.md"
 requires-python = ">=3.12"
 dependencies = []
 
