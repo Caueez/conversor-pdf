@@ -20,6 +20,8 @@ class AccountSettings(BaseSettings):
 
     USER_REPO: str = "postgres"
 
+    PASSWORD_HASHER_ROUNDS: int = 12
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> AccountSettings:
