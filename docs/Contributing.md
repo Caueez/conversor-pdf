@@ -12,6 +12,16 @@ Aplica-se a todo o monorepo.
 - `src/services/<servico>/docs/tasks/`: tarefas especificas de cada servico.
 - Se a implementacao principal exigir mudancas em outro servico, criar task no servico impactado e registrar a ordem na linha do tempo da task principal.
 
+## Fluxo Operacional Com Agente
+
+- O agente deve iniciar pela idealizacao da task (escopo, timeline, dependencias, conflitos e documentacao impactada).
+- O planejamento formal da task deve ser validado pelo programador antes da execucao das alteracoes de implementacao.
+- A timeline deve sempre comecar por validacao de testes (existentes e novos cenarios necessarios).
+- Ambiguidades de requisito ou implementacao devem virar perguntas diretas ao programador antes de alterar codigo.
+- O agente so deve alterar `src/` quando solicitado pelo programador.
+- Em `src/`, mudancas em multiplos arquivos exigem permissao explicita do programador.
+- Ao final da implementacao, o agente deve validar arquivos alterados, requisitos da task e testes necessarios.
+
 ## Fluxo Git Obrigatorio (Fim Da Implementacao)
 
 1. Classificar o escopo da entrega (geral do monorepo ou servico especifico).
@@ -70,6 +80,7 @@ Para cada task tocada na branch:
 
 ## Checklist Minimo Antes De Finalizar
 
+- Testes definidos na task foram executados na ordem planejada.
 - Codigo compila/roda no contexto local.
 - Documentacao impactada foi atualizada.
 - Riscos e pendencias foram registrados.

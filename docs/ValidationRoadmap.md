@@ -17,6 +17,7 @@ Acompanhamento de riscos, pendencias e melhorias de qualidade no nivel do monore
 - [Tarefa 005 - Determinismo De Build Docker](./tasks/task-005-docker-build-determinism.md)
 - [Tarefa 007 - Configuracao De Ambiente No Compose](./tasks/task-007-compose-env-configuration.md)
 - [Tarefa 008 - Volume De Persistencia Do Postgres](./tasks/task-008-postgres-persistence-volume.md)
+- [Tarefa 009 - Governanca Operacional Do Agente E Fluxo De Tasks](./tasks/task-009-governanca-operacional-do-agente-e-fluxo-de-tasks.md)
 
 ## Backlogs De Servico
 
