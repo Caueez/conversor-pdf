@@ -2,13 +2,13 @@
 
 ## Metadados
 - Data de criacao: 2026-03-26
-- Data de finalizacao: -
-- Commit de implementacao: -
+- Data de finalizacao: 2026-03-26
+- Commit de implementacao: 84303525da7604ee5cf245beb389a52511d49d29
 - Branch de implementacao: docs/governanca-operacional-agente
 - Risco/Urgencia: Media / Medio prazo
 
 ## Status
-Em andamento
+Concluida
 
 ## Escopo
 - Escopo principal: Geral do monorepo
@@ -22,7 +22,7 @@ Em andamento
 5. [x] Atualizar `Chat.md` para refletir compliance obrigatorio e mapeamento de execucao alinhados ao fluxo definido.
 6. [x] Atualizar `docs/ValidationRoadmap.md` com o registro desta task no backlog ativo do monorepo.
 7. [x] Revisar consistencia final entre task, documentos atualizados, dependencias e conflitos mapeados.
-8. [ ] Registrar hash de commit da implementacao e atualizar status/data de finalizacao da task.
+8. [x] Registrar hash de commit da implementacao e atualizar status/data de finalizacao da task.
 
 ## Dependencias
 - `docs/tasks/task-004-test-coverage.md` (alinhamento de estrategia de testes no monorepo).
@@ -57,4 +57,4 @@ Fluxo definido para esta task:
 - Sem pedido explicito do programador, o agente deve limitar-se a planejamento, mapeamento e validacao.
 - O programador pode executar uma etapa inicial e delegar etapas seguintes ao agente (ex.: "executar da etapa 2 em diante").
 - Regras de autorizacao foram consolidadas em `docs/Agent.md`, `docs/Contributing.md` e `Chat.md`.
-- Pendente registrar commit de implementacao para encerrar a task.
+- Task encerrada com metadados de branch e commit registrados.
