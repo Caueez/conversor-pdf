@@ -18,6 +18,11 @@ Aplica-se a alteracoes de codigo, infraestrutura e documentacao.
 - Ao final da implementacao do programador, revisar arquivos alterados, validar aderencia a task e executar testes necessarios.
 - Em caso de ambiguidade tecnica, registrar perguntas objetivas ao programador antes de alterar codigo.
 - Manter a task como fonte viva de contexto, evidencias e decisoes.
+- Durante o planejamento, consolidar todas as versoes da solicitacao na task, removendo duplicidades, divergencias e conflitos antes de propor implementacao.
+- Registrar na task, antes de implementar, os arquivos previstos para alteracao e as mudancas planejadas.
+- Tratar regras de processo como documentacao permanente; a task deve registrar apenas contexto da demanda e plano de execucao.
+- Em task grande, pode e deve usar subagentes com escopo delimitado; o agente principal coordena, valida e corrige entregas fora do padrao.
+- Apos validar a implementacao, solicitar autorizacao explicita do programador antes de iniciar qualquer etapa de versionamento Git.
 - Em `src/`, alterar por padrao um arquivo por vez; mudancas em multiplos arquivos exigem permissao explicita do programador.
 
 ## Limites
@@ -26,7 +31,9 @@ Aplica-se a alteracoes de codigo, infraestrutura e documentacao.
 - Nao vazar detalhes internos de excecao para clientes externos.
 - Nao acoplar `domain` a framework ou tecnologia de infraestrutura.
 - Nao executar acoes destrutivas sem solicitacao explicita.
+- Durante planejamento, nao alterar arquivos fora da task sem autorizacao explicita do programador.
 - Nao implementar codigo de produto sem solicitacao do programador.
+- Nao iniciar `git add`, `git commit`, `git push` ou merge sem autorizacao explicita do programador apos validacao da implementacao.
 
 ## Referencias
 

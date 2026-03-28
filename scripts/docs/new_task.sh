@@ -4,8 +4,8 @@ set -euo pipefail
 usage() {
   cat <<USAGE
 Uso:
-  scripts/docs/new_task.sh --scope root --titulo "Titulo da tarefa" [--status "Pendente"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
-  scripts/docs/new_task.sh --scope service --service account-service --titulo "Titulo da tarefa" [--status "Pendente"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
+  scripts/docs/new_task.sh --scope root --titulo "Titulo da tarefa" [--status "Em planejamento"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
+  scripts/docs/new_task.sh --scope service --service account-service --titulo "Titulo da tarefa" [--status "Em planejamento"] [--risco "Media / Medio prazo"] [--commit "-"] [--branch "-"]
 
 Regras:
   - --scope root: apenas tarefas de escopo geral do monorepo.
@@ -16,12 +16,12 @@ USAGE
 scope=""
 service=""
 titulo=""
-status="Pendente"
+status="Em planejamento"
 risco="Media / Medio prazo"
 commit_ref=""
 branch_ref=""
 
-today="$(date +%F)"
+now="$(date '+%Y-%m-%d %H:%M:%S %z')"
 
 slugify() {
   local value="$1"
@@ -130,7 +130,7 @@ slug="$(slugify "$titulo")"
 file_path="$target_dir/task-${number_padded}-${slug}.md"
 
 if [[ "$status" == Concluida* ]]; then
-  completion_date="$today"
+  completion_date="$now"
   if [[ -z "$commit_ref" ]]; then
     commit_ref="nao informado (registrar hash apos commit)"
   fi
@@ -151,38 +151,66 @@ cat > "$file_path" <<TASK
 # Tarefa ${number_padded} - ${titulo}
 
 ## Metadados
-- Data de criacao: ${today}
+- Data de criacao: ${now}
+- Ultima atualizacao: ${now}
 - Data de finalizacao: ${completion_date}
-- Commit de implementacao: ${commit_ref}
-- Branch de implementacao: ${branch_ref}
-- Risco/Urgencia: ${risco}
-
-## Status
-${status}
-
-## Escopo
+- Status: ${status}
 - Escopo principal: ${scope_label}
 - Servico alvo: ${service_label}
+- Risco/Urgencia: ${risco}
+- Branch de implementacao: ${branch_ref}
+- Commit de implementacao: ${commit_ref}
 
-## Linha Do Tempo
-1. [ ] Definir ordem de implementacao desta task no fluxo.
-2. [ ] Registrar dependencias de tasks anteriores (mesmo servico, raiz ou outro servico).
-3. [ ] Registrar tarefas posteriores desbloqueadas por esta entrega.
+## Solicitacoes Versionadas (Chat)
 
-## Dependencias
-- Nenhuma dependencia registrada.
+### Versao 1 - ${now}
+- Descrever a solicitacao inicial do chat.
 
-## Conflitos Mapeados
-- Nenhum conflito identificado ate o momento.
+## Analise Consolidada Da Task
+- Objetivo consolidado:
+- Estado atual consolidado:
+- Consistencia entre solicitacoes:
+- Controle de duplicidade e divergencia:
+- Pontos de atencao atuais:
 
-## Contexto
-Descreva o contexto da tarefa.
+## Escopos Alterados E Mudancas Planejadas
+- Escopo:
+  - Mudanca planejada:
 
-## Evidencias
-- Adicionar evidencias aqui.
+## Arquivos Previstos Para Alteracao (Quando Houver Liberacao)
+- \`caminho/arquivo\`
+  - O que sera alterado.
 
-## Observacoes
-- Sem observacoes adicionais.
+## Mudancas Previstas Por Arquivo (Rascunho)
+1. \`caminho/arquivo\`
+   - Mudanca prevista.
+
+## Plano Evolutivo Da Task (Por Etapas)
+
+### Etapa 1 - Estruturacao Inicial
+1. [ ] Registrar solicitacao inicial da task.
+2. [ ] Consolidar analise inicial.
+3. [ ] Mapear escopos e arquivos previstos sem implementar.
+
+### Etapa 2 - Refinamento
+1. [ ] Incorporar novas versoes de solicitacao com marcacao temporal.
+2. [ ] Revalidar consistencia do plano.
+3. [ ] Refinar mudancas previstas por arquivo.
+
+### Etapa 3 - Liberacao
+1. [ ] Validar planejamento com o programador.
+2. [ ] Ajustar pendencias finais do plano.
+3. [ ] Aguardar autorizacao explicita para iniciar implementacao.
+
+### Etapa 4 - Implementacao
+1. [ ] Executar implementacao autorizada.
+2. [ ] Validar implementacao do agente (escopo, requisitos e testes).
+3. [ ] Registrar resultado da validacao para revisao do programador.
+
+### Etapa 5 - Versionamento Git
+1. [ ] Solicitar autorizacao explicita do programador para iniciar versionamento Git apos validacao da implementacao.
+2. [ ] Classificar arquivos alterados e revisar diff final.
+3. [ ] Executar versionamento Git autorizado (branch, commit, push e merge conforme instrucao do programador).
 TASK
 
 echo "Tarefa criada: ${file_path}"

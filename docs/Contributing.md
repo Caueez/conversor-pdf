@@ -15,23 +15,37 @@ Aplica-se a todo o monorepo.
 ## Fluxo Operacional Com Agente
 
 - O agente deve iniciar pela idealizacao da task (escopo, timeline, dependencias, conflitos e documentacao impactada).
+- A cada nova interacao do programador, o agente deve adicionar uma nova versao da solicitacao na task com marcacao temporal.
+- Antes de implementar, o agente deve consolidar todas as versoes da solicitacao para eliminar duplicidades, divergencias e conflitos.
 - O planejamento formal da task deve ser validado pelo programador antes da execucao das alteracoes de implementacao.
+- Durante planejamento, alteracoes ficam restritas ao arquivo da task ate autorizacao explicita do programador.
 - A timeline deve sempre comecar por validacao de testes (existentes e novos cenarios necessarios).
 - Ambiguidades de requisito ou implementacao devem virar perguntas diretas ao programador antes de alterar codigo.
 - O agente so deve alterar `src/` quando solicitado pelo programador.
 - Em `src/`, mudancas em multiplos arquivos exigem permissao explicita do programador.
+- Regras persistentes de processo nao devem ficar na task; devem ser registradas na documentacao do escopo da regra.
 - Ao final da implementacao, o agente deve validar arquivos alterados, requisitos da task e testes necessarios.
+
+## Criterios De Liberacao Da Implementacao
+
+- Planejamento da task validado pelo programador.
+- Arquivos previstos para alteracao e mudancas planejadas aprovados pelo programador.
+- Riscos tecnicos e estrategia de testes registrados para o escopo da entrega.
+- Autorizacao explicita do programador para iniciar implementacao.
+- Apos validacao da implementacao pelo agente, autorizacao explicita do programador para iniciar versionamento Git.
 
 ## Fluxo Git Obrigatorio (Fim Da Implementacao)
 
-1. Classificar o escopo da entrega (geral do monorepo ou servico especifico).
-2. Verificar se ja existe task com mesmo objetivo para evitar duplicidade/conflito.
-3. Separar arquivos em grupos de escopo unico.
-4. Para cada grupo, criar uma branch nova sempre a partir de `develop`.
-5. Dentro de cada branch, realizar commits pequenos com escopo ainda mais reduzido.
-6. Preencher as tasks da branch com commits de implementacao, linha do tempo, dependencias e conflitos mapeados.
-7. Aguardar revisao humana.
-8. Somente apos confirmacao humana, fazer merge da branch em `develop`.
+1. Validar implementacao da task (escopo, requisitos e testes) antes de iniciar versionamento Git.
+2. Solicitar e aguardar autorizacao explicita do programador para iniciar versionamento Git.
+3. Classificar o escopo da entrega (geral do monorepo ou servico especifico).
+4. Verificar se ja existe task com mesmo objetivo para evitar duplicidade/conflito.
+5. Separar arquivos em grupos de escopo unico.
+6. Para cada grupo, criar uma branch nova sempre a partir de `develop`.
+7. Dentro de cada branch, realizar commits pequenos com escopo ainda mais reduzido.
+8. Preencher as tasks da branch com commits de implementacao, linha do tempo, dependencias e conflitos mapeados.
+9. Aguardar revisao humana.
+10. Somente apos confirmacao humana, fazer merge da branch em `develop`.
 
 ## Regras De Branch
 

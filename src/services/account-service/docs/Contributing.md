@@ -12,6 +12,13 @@ Fluxo de branch, commits, revisao e sincronizacao de documentacao.
 - Tasks de escopo geral ficam na raiz em `docs/tasks/`.
 - Se esta task depender de outro servico, criar task no servico impactado e registrar a ordem na linha do tempo.
 
+## Fluxo Operacional Com Agente
+
+- Seguir `docs/Agent.md` e `docs/Contributing.md` como fonte das regras permanentes de planejamento e liberacao de implementacao.
+- Durante planejamento da task do servico, alteracoes ficam restritas ao arquivo da task ate autorizacao explicita do programador.
+- Implementacao no servico so inicia apos cumprir os criterios de liberacao da raiz e receber autorizacao explicita.
+- Apos validacao da implementacao do servico, versionamento Git tambem exige autorizacao explicita do programador.
+
 ## Fluxo Git Obrigatorio (Fim Da Implementacao)
 
 1. Confirmar que a task pertence ao escopo do `account-service`.

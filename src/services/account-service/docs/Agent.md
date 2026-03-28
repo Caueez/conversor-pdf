@@ -8,6 +8,7 @@ Definir como agentes devem atuar no `account-service` sem quebrar regras de domi
 
 ## Regras De Operacao
 
+- Seguir as regras operacionais da raiz em `docs/Agent.md` para planejamento, consolidacao de versoes da solicitacao e coordenacao de subagentes.
 - Tratar `domain` como fonte de invariantes de negocio.
 - Implementar detalhes tecnicos (hash, banco, observabilidade) em `infra` via portas.
 - Manter alinhamento entre validacoes de API e regras de dominio.
