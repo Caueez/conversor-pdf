@@ -2,14 +2,14 @@
 
 ## Metadados
 - Data de criacao: 2026-03-28 00:39:00 -0300 (aprox.)
-- Ultima atualizacao: 2026-03-28 01:41:41 -0300
+- Ultima atualizacao: 2026-03-28 01:47:59 -0300
 - Data de finalizacao: 2026-03-28 01:41:41 -0300
 - Status: Concluida
 - Escopo principal: Geral do monorepo
 - Servico alvo: -
 - Risco/Urgencia: Media / Medio prazo
-- Branch de implementacao: -
-- Commit de implementacao: -
+- Branch de implementacao: docs/task-001-modelo-evolutivo
+- Commit de implementacao: 4ca98f7
 
 ## Solicitacoes Versionadas (Chat)
 
@@ -56,6 +56,11 @@
 - O plano evolutivo das tasks deve incluir a parte de versionamento Git apos a Etapa 4.
 - O inicio do versionamento Git deve depender de autorizacao explicita do programador apos validar a implementacao do agente.
 
+### Versao 7 - 2026-03-28 01:47:59 -0300
+- A task deve mostrar explicitamente a Etapa 5 de Versionamento Git como concluida.
+- Essa etapa deve permanecer como padrao no template de task.
+- Registrar a mudanca em commit e finalizar com merge da branch em `develop`.
+
 ## Analise Consolidada Da Task
 - Objetivo consolidado:
   - Formalizar um modelo de task evolutiva guiada por chat, com refinamento iterativo antes da implementacao.
@@ -63,7 +68,7 @@
   - Estrutura de solicitacoes versionadas validada.
   - Necessidade de tornar a leitura mais orientada ao plano da task (e nao apenas por versao) incorporada.
 - Consistencia entre solicitacoes:
-  - Nao foram encontrados conflitos bloqueantes entre as versoes 1, 2, 3, 4, 5 e 6.
+  - Nao foram encontrados conflitos bloqueantes entre as versoes 1, 2, 3, 4, 5, 6 e 7.
   - As versoes mais novas refinam as anteriores sem contradizer o objetivo central.
 - Controle de duplicidade e divergencia:
   - Regras repetidas foram consolidadas.
@@ -136,3 +141,10 @@
 2. [x] Atualizar `docs/ValidationRoadmap.md` para refletir o backlog atual da raiz.
 3. [x] Atualizar `src/services/account-service/docs/ValidationRoadmap.md` para refletir backlog atual do servico.
 4. [x] Validar script com `bash -n` e `--help`.
+
+### Etapa 5 - Versionamento Git (Concluida)
+1. [x] Manter a etapa de versionamento Git como padrao no template de task.
+2. [x] Criar branch de trabalho para a entrega: `docs/task-001-modelo-evolutivo`.
+3. [x] Executar versionamento Git da implementacao com commit dedicado.
+4. [x] Atualizar a task para registrar explicitamente a conclusao da etapa de versionamento Git.
+5. [x] Realizar merge da branch em `develop` com autorizacao explicita do programador.
