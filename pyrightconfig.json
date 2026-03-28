@@ -1,0 +1,18 @@
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "include": [
+    "src/services/account-service/src",
+    "src/services/account-service/tests",
+    "src/infra"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "src/services/account-service",
+      "extraPaths": [
+        "src/services/account-service/src",
+        "src"
+      ]
+    }
+  ]
+}

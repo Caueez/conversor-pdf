@@ -10,12 +10,12 @@ Pendencias e entregas relacionadas ao servico de contas/usuarios.
 
 - Fluxo principal de usuarios esta implementado.
 - Arquitetura por camadas e portas/adaptadores esta ativa.
-- Backlog de tasks do servico foi resetado para adotar o novo fluxo de task evolutiva.
+- Suite de testes do servico entrou em implementacao com cobertura unitaria, integracao, E2E, contrato e smoke.
 
 ## Tarefas
 
-- Nenhuma task ativa no momento.
-- Novas tasks do servico devem ser abertas conforme o fluxo validado na task piloto da raiz.
+- [Tarefa 001 - Planejamento de testes do account-service](./tasks/task-001-planejamento-de-testes-do-account-service.md) (Pronto para versionamento)
+- [Tarefa 002 - Correcao de update de email no user use-case](./tasks/task-002-correcao-de-update-de-email-no-user-use-case.md) (Em planejamento)
 
 ## Referencias
 
