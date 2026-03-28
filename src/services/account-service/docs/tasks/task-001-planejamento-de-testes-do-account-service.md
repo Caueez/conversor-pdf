@@ -2,14 +2,14 @@
 
 ## Metadados
 - Data de criacao: 2026-03-28 01:56:31 -0300
-- Ultima atualizacao: 2026-03-28 15:12:26 -0300
-- Data de finalizacao: -
-- Status: Em versionamento
+- Ultima atualizacao: 2026-03-28 15:15:12 -0300
+- Data de finalizacao: 2026-03-28 15:15:12 -0300
+- Status: Concluida
 - Escopo principal: Servico
 - Servico alvo: account-service
 - Risco/Urgencia: Media / Medio prazo
 - Branch de implementacao: feat/account-service-test-suite
-- Commit de implementacao: -
+- Commit de implementacao: 7a1ce33
 
 ## Solicitacoes Versionadas (Chat)
 
@@ -57,6 +57,14 @@
 - Autorizacao explicita recebida para executar a Etapa 5 de versionamento Git.
 - Branch de trabalho criada para entrega da task.
 
+### Versao 8 - 2026-03-28 15:15:12 -0300
+- Verificacao final reexecutada com sucesso:
+  - `uv run --package account-service pytest src/services/account-service/tests -q` -> `89 passed, 2 xfailed`;
+  - `uvx pyright src/services/account-service/tests/conftest.py` -> `0 errors`;
+  - `uv run --package account-service python -c "import account_service.settings"` -> import resolvido.
+- Etapa 5 concluida com `branch + commit + push` para `feat/account-service-test-suite`.
+- Merge em `develop` permanece condicionado a instrucao explicita do programador.
+
 ## Analise Consolidada Da Task
 - Objetivo consolidado:
   - Definir um plano de testes decision complete para cobertura funcional completa do `account-service`, incluindo unitarios, integracao, E2E e validacao de contrato HTTP.
@@ -70,7 +78,7 @@
   - Bug funcional detectado em update de email foi isolado na `task-002-correcao-de-update-de-email-no-user-use-case`.
   - O plano aprovado fixa que integracao e E2E devem usar infra real, sem substituir por mock os adapters externos.
 - Consistencia entre solicitacoes:
-  - As versoes 1, 2, 3, 4, 5, 6 e 7 sao complementares e sem conflito.
+  - As versoes 1, 2, 3, 4, 5, 6, 7 e 8 sao complementares e sem conflito.
 - Controle de duplicidade e divergencia:
   - Nao ha task ativa no servico com o mesmo objetivo (`src/services/account-service/docs/tasks/` estava vazio antes desta task).
   - Escopo permanece exclusivo do `account-service`, sem dependencia de outro servico.
@@ -193,6 +201,10 @@
     - Resultado: import de `account_service` resolvido sem `PYTHONPATH` manual.
   - `uv run --package account-service pytest src/services/account-service/tests -q`
     - Resultado: `89 passed, 2 xfailed` sem `PYTHONPATH` manual.
+  - `uvx pyright src/services/account-service/tests/conftest.py`
+    - Resultado: `0 errors, 0 warnings, 0 informations`.
+  - `git ls-remote --heads origin feat/account-service-test-suite`
+    - Resultado: branch remota atualizada para `7a1ce3310690a563959e76a75dae74f5a1058de4`.
 
 ## Plano Evolutivo Da Task (Por Etapas)
 
@@ -226,4 +238,4 @@
 ### Etapa 5 - Versionamento Git
 1. [x] Solicitar autorizacao explicita do programador para iniciar versionamento Git apos validacao da implementacao.
 2. [x] Classificar arquivos alterados e revisar diff final.
-3. [ ] Executar versionamento Git autorizado (branch, commit, push e merge conforme instrucao do programador).
+3. [x] Executar versionamento Git autorizado (branch, commit e push concluidos; merge condicionado a instrucao explicita do programador).
