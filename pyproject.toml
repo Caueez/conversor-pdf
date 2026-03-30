@@ -7,5 +7,17 @@ dependencies = []
 
 [tool.uv.workspace]
 members = [
-    "src/services/account-service",
+    "backend/infra",
+    "backend/services/account-service",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["backend/services/account-service/tests"]
+markers = [
+    "unit: unit tests that must run on every pull request",
+    "integration: integration tests against real external infrastructure",
+    "e2e: end-to-end API tests with full service stack",
+    "contract: HTTP contract validation tests",
+    "smoke: fast critical-path tests for quick feedback",
 ]

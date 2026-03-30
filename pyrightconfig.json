@@ -2,16 +2,24 @@
   "venvPath": ".",
   "venv": ".venv",
   "include": [
-    "src/services/account-service/src",
-    "src/services/account-service/tests",
-    "src/infra"
+    "backend/services/account-service/src",
+    "backend/services/account-service/tests",
+    "backend/infra/src"
   ],
   "executionEnvironments": [
     {
-      "root": "src/services/account-service",
+      "root": "backend/services/account-service",
       "extraPaths": [
-        "src/services/account-service/src",
-        "src"
+        "backend/services/account-service/src",
+        "backend/infra/src",
+        "backend"
+      ]
+    },
+    {
+      "root": "backend/infra",
+      "extraPaths": [
+        "backend/infra/src",
+        "backend"
       ]
     }
   ]
