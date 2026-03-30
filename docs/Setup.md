@@ -25,5 +25,6 @@ docker compose logs -f account-service
 
 ## Referencias
 
-- Guia de setup do servico: [account-service/docs/Setup.md](../src/services/account-service/docs/Setup.md)
-- Variaveis de ambiente do servico: `src/services/account-service/.env.example`
+- Guia de setup do servico: [account-service/docs/Setup.md](../backend/services/account-service/docs/Setup.md)
+- Guia de setup do modulo compartilhado: [infra/docs/Setup.md](../backend/infra/docs/Setup.md)
+- Variaveis de ambiente do servico: `backend/services/account-service/.env.example`
