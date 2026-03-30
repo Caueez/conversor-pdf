@@ -14,10 +14,9 @@ Regras de evolucao de contratos externos e internos no monorepo.
 
 ## Contratos Por Servico
 
-- `account-service`: [Contracts.md](../src/services/account-service/docs/Contracts.md)
+- `account-service`: [Contracts.md](../backend/services/account-service/docs/Contracts.md)
 
 ## Referencias
 
 - [Architecture.md](./Architecture.md)
 - [BusinessRules.md](./BusinessRules.md)
-- [Contributing.md](./Contributing.md)

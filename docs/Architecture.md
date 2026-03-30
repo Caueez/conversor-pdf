@@ -1,31 +1,35 @@
 # Arquitetura
 
 ## Objetivo
-Documentar os principios arquiteturais estaveis do monorepo.
+Documentar a arquitetura do sistema como um todo no monorepo.
 
 ## Escopo
-Diretrizes de alto nivel e fronteiras tecnicas entre componentes.
+Diretrizes de alto nivel, estrutura global e fronteiras entre dominios tecnicos.
 
-## Principios
+## Visao Geral Do Monorepo
 
-- Arquitetura em camadas com portas e adaptadores.
-- Regras de negocio centralizadas no `domain` e orquestracao no `application`.
-- Infraestrutura implementa portas definidas pela aplicacao.
-- API atua como camada de transporte e adaptacao de contrato externo.
+- `backend/services/`: servicos de negocio independentes.
+- `backend/infra/`: componentes tecnicos compartilhados entre servicos.
+- `docs/`: documentacao estavel de arquitetura, contratos, regras e setup.
+- `development/`: diretrizes operacionais e roadmap de evolucao tecnica.
 
-## Regras De Dependencia
+## Principios Arquiteturais
 
-- `domain` nao depende de framework ou infraestrutura.
-- `application` depende de abstracoes (ports), nao de implementacoes concretas.
-- `infra` depende de `application`/`domain` para implementar portas.
-- `api` depende de `application` para executar casos de uso.
+- Servicos devem ser fracamente acoplados e evoluir de forma independente.
+- Dominio de negocio deve ficar isolado de detalhes de infraestrutura.
+- Contratos externos devem ser documentados por servico.
+- Componentes tecnicos compartilhados devem ficar em `backend/infra/`.
+- Dependencias entre servicos devem ser explicitas e minimizadas.
 
-## Referencias Por Servico
+## Fronteiras De Responsabilidade
 
-- `account-service`: [Architecture.md](../src/services/account-service/docs/Architecture.md)
+- Cada servico define sua arquitetura interna em `backend/services/<servico>/docs/Architecture.md`.
+- O modulo compartilhado define sua arquitetura interna em `backend/infra/docs/Architecture.md`.
+- Este documento nao descreve implementacao interna de um servico especifico.
 
 ## Referencias
 
 - [Contracts.md](./Contracts.md)
 - [BusinessRules.md](./BusinessRules.md)
-- [ValidationRoadmap.md](./ValidationRoadmap.md)
+- [Setup.md](./Setup.md)
+- [Desenvolvimento](../development/Index.md)
