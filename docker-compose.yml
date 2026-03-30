@@ -2,19 +2,21 @@ services:
   account-service:
     build:
       context: .
-      dockerfile: src/services/account-service/Dockerfile
+      dockerfile: backend/services/account-service/Dockerfile
+    env_file:
+      - ./backend/services/account-service/.env
     develop:
       watch:
         - action: sync+restart
-          path: ./src/services/account-service/src/account_service
-          target: /app/src/account_service
+          path: ./backend/services/account-service/src/account_service
+          target: /app/backend/services/account-service/src/account_service
         - action: sync+restart
-          path: ./src/infra
-          target: /app/src/infra
+          path: ./backend/infra
+          target: /app/backend/infra
         - action: rebuild
-          path: ./src/services/account-service/pyproject.toml
+          path: ./backend/services/account-service/pyproject.toml
         - action: rebuild
-          path: ./src/services/account-service/Dockerfile
+          path: ./backend/services/account-service/Dockerfile
     ports:
       - "8000:8000"
     depends_on:
